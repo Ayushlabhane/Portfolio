@@ -430,61 +430,6 @@ section .container {
   display: flex;
   align-items: center;
 }
-body {
-  margin: 0;
-  background-color: #0d0d0d;
-  color: white;
-  font-family: Consolas, monospace;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  gap: 60px;
-  padding: 40px;
-}
-
-.circle-container {
-  width: 340px;
-  height: 340px;
-  border-radius: 50%;
-  background-color: #111;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  padding: 35px;
-  overflow: hidden;
-  box-shadow: 0 0 30px rgba(0,123,255,0.4);
-}
-
-#display {
-  white-space: pre-wrap;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* Cursor */
-.cursor::after {
-  content: "|";
-  animation: blink 1s infinite;
-  margin-left: 4px;
-}
-
-@keyframes blink {
-  0% {opacity: 1;}
-  50% {opacity: 0;}
-  100% {opacity: 1;}
-}
-
-/* Blue highlight box */
-.highlight {
-  background-color: rgba(0, 123, 255, 0.6);
-  padding: 2px 4px;
-  border-radius: 4px;
-}
 .about-me .content ul strong {
   margin-right: 10px;
 }
