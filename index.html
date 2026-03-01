@@ -27,6 +27,62 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <style>
+    /* Animated Circle - About Section */
+    .about-circle-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .circle-container {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+      padding: 35px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0, 123, 255, 0.5), 0 0 80px rgba(0, 123, 255, 0.2);
+      flex-shrink: 0;
+    }
+
+    #display {
+      white-space: pre-wrap;
+      font-size: 14px;
+      line-height: 1.6;
+      font-family: Consolas, monospace;
+      color: #fff;
+    }
+
+    .highlight {
+      background-color: rgba(0, 123, 255, 0.6);
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    .about-flex-layout {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .about-flex-layout {
+        flex-direction: column;
+      }
+      .circle-container {
+        width: 240px;
+        height: 240px;
+      }
+    }
+  </style>
+
   <!-- =======================================================
   * Template Name: Personal
   * Updated: Jan 09 2024 with Bootstrap v5.3.2
@@ -78,7 +134,25 @@
         <p>Learn more about me</p>
       </div>
 
-      <div class="row">
+      <div class="about-flex-layout">
+
+        <!-- Animated Circle -->
+        <div class="circle-container">
+          <div id="display"></div>
+        </div>
+
+        <!-- About Text -->
+        <div style="flex: 1; min-width: 250px;">
+          <h3>Passionate Data Analyst</h3>
+          <p class="fst-italic">
+          Data Analyst with hands-on experience in SQL, Python, Excel, and Power BI, focused on building KPI-driven insights and performance dashboards. I specialize in exploratory data analysis, query optimization, data validation, and translating complex datasets into clear, structured business reports.
+          </p>
+          <p class="fst-italic">Through real-world analytics projects, I’ve analyzed revenue trends, identified regional underperformance, and developed interactive dashboards using DAX and structured data modeling. I combine analytical rigor with practical problem-solving to deliver insights that support smarter decision-making.</p>
+          <p class="fst-italic">Feel free to connect or contact me via <a href="https://www.linkedin.com/in/ayush-labhane-6ab674259/">linkedin</a></p>
+        </div>
+
+      </div>
+
     </div><!-- End About Me -->
 
 
@@ -167,7 +241,7 @@
             <p>
             <ul>
               <li>Pune , Maharashtra- India</li>
-              <li>ayush.labhane@gmail.com</li>
+              <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91f0e8e4e2f9bffdf0f3f9f0fff4d1f6fcf0f8fdbff2fefc">[email&#160;protected]</a></li>
             </ul>
             </p>
           </div>
@@ -468,7 +542,7 @@
           <div class="info-box">
             <i class="bx bx-envelope"></i>
             <h3>Email Me</h3>
-            <p>ayush.labhane@gmail.com</p>
+            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e889919d9b80c684898a8089868da88f85898184c68b8785">[email&#160;protected]</a></p>
           </div>
         </div>
 
@@ -487,19 +561,73 @@
   </div>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <!-- Animated Circle Script -->
+  <script>
+    (function() {
+      const codeText = `# Python Script
+name = "Ayush Rajesh Labhane"
+role = "Aspiring Data Analyst"
+skills = ["SQL", "Excel", "Python", "Power BI"]
+
+print(name)
+print(role)
+print(", ".join(skills))`;
+
+      const finalText = "Ayush Rajesh Labhane An Aspiring Data Analyst SQL Excel Python Power BI Data Cleaning Visualisation";
+
+      const display = document.getElementById("display");
+
+      let index = 0;
+      const typingSpeed = 40;
+
+      function typeCode() {
+        if (index < codeText.length) {
+          display.innerHTML += codeText.charAt(index);
+          index++;
+          setTimeout(typeCode, typingSpeed);
+        } else {
+          setTimeout(showFinalText, 1500);
+        }
+      }
+
+      function showFinalText() {
+        display.innerHTML = finalText;
+        startHighlightLoop();
+      }
+
+      function startHighlightLoop() {
+        const words = finalText.split(" ");
+        let wordIndex = 0;
+
+        setInterval(() => {
+          let highlightedText = words.map((word, i) => {
+            return i === wordIndex
+              ? `<span class="highlight">${word}</span>`
+              : word;
+          }).join(" ");
+
+          display.innerHTML = highlightedText;
+
+          wordIndex++;
+          if (wordIndex >= words.length) {
+            wordIndex = 0;
+          }
+        }, 1000);
+      }
+
+      window.addEventListener('load', typeCode);
+    })();
+  </script>
+
 </body>
-
 </html>
-
-
